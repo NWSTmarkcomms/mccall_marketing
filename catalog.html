@@ -1508,6 +1508,26 @@ document.addEventListener('DOMContentLoaded', () => {
       toggleFeature(e);
     });
   }
+
+      // ✅ Form handler for Zapier + success message + redirect
+  window.handleFormSubmit = function(e) {
+    e.preventDefault();
+    const form = e.target;
+
+    // Submit to Zapier webhook
+    form.submit();
+
+    // Show success message (scoped to this product card)
+    const msg = form.parentElement.querySelector('#successMessage');
+    if (msg) {
+      msg.style.display = 'block';
+    }
+
+    // Auto-redirect after short delay
+    setTimeout(() => {
+      window.location.href = 'success.html';
+    }, 2500);
+  };
 });
 </script>
 
